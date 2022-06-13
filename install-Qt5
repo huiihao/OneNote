@@ -1,0 +1,24 @@
+https://blog.csdn.net/weixin_29890207/article/details/116619951
+https://www.jb51.net/article/229021.htm
+
+https://mirrors.tuna.tsinghua.edu.cn/qt/archive/qt/5.9/5.9.0/
+
+
+apt-get install gcc g++
+apt-get install gdb
+sudo apt-get install libqt4-dev
+sudo apt-get install build-essential
+
+
+another way:
+https://blog.csdn.net/xuanwolanxue/article/details/108636640
+
+sudo apt-get update
+sudo apt-get install build-essential
+
+sudo apt-get install qt5-default
+sudo apt-get install libfontconfig1
+sudo apt-get upgrade
+
+export DISPLAY=:0
+
