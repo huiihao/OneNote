@@ -2,3 +2,6 @@ http://t.zoukankan.com/Aaron12-p-9113374.html
 
 conda create -n py2 python=2.7
 conda info -e
+
+source activate py2
+source deactivate
