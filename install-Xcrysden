@@ -1,3 +1,4 @@
+**http://sites.science.oregonstate.edu/~tatej/COURSES/ph575/doku.php?id=xcrysden**
 https://zhuanlan.zhihu.com/p/345290744
 
 http://www.xcrysden.org/Download.html
@@ -22,3 +23,41 @@ sudo apt-get install build-essential gfortran freeglut3-dev tcl8.5-dev tk8.5-dev
 sudo apt-get install mplayer mencoder imagemagick openbabel
 sudo apt update
 sudo apt upgrade
+
+
+xcrysden
+error:
+/mnt/d/xcrysden/bin/xcrys: error while loading shared libraries: libtk8.6.so: cannot open shared object file: No such file or directory
+solve:
+sudo apt-get update -y
+sudo apt-get install -y libtk8.6
+
+
+xcrysden
+error:
+/mnt/d/xcrysden/bin/xcrys: error while loading shared libraries: libTogl.so.2: cannot open shared object file: No such file or directory
+solve:
+sudo apt-get update -y
+sudo apt-get install -y libtogl2
+
+
+xcrysden
+error:
+/mnt/d/xcrysden/bin/xcrys: error while loading shared libraries: libGLU.so.1: cannot open shared object file: No such file or directory
+solve:
+sudo apt-get update -y
+sudo apt-get install libglu1
+
+xcrysden
+error:
+application-specific initialization failed: couldn't connect to display "127.0.0.1:0.0"
+Error in startup script: can't read "xcrys(platform)": no such variable
+solve:
+apt install x11-xserver-utils
+xhost +
+
+apt install xinit
+
+sudo apt-get install x11vnc -y
+sudo apt install net-tools
+sudo apt-get install lightdm
