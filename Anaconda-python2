@@ -5,3 +5,6 @@ conda info -e
 
 source activate py2
 source deactivate
+
+ｌｉｎｕｘ系统才需要用ｃｏｎｄａ　ａｃｔｉｖａｔｅ　ｘｘｘ。
+ｗｉｎｄｏｕｗ 系统不用
