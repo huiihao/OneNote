@@ -3,3 +3,6 @@ https://blog.csdn.net/Arno_An/article/details/105229780
 
 wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda3-4.0.0-Linux-x86_64.sh
 bash Anaconda3-4.0.0-Linux-x86_64.sh
+echo 'export PATH="~/anaconda3/bin":$PATH' >> ~/.bashrc
+source ~/.bashrc
+conda list
