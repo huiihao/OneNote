@@ -4,6 +4,10 @@ channels:
     - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
 show_channel_url: true
 
+conda clean -i
+
+conda install ???
+
 error：
 Using Anaconda Cloud api site https://api.anaconda.org
 Fetching package metadata: SSL verification error: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c:645)
