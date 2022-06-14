@@ -15,10 +15,13 @@ https://blog.csdn.net/xuanwolanxue/article/details/108636640
 
 sudo apt-get update
 sudo apt-get install build-essential
-
+sudo apt-get install qtcreator
 sudo apt-get install qt5-default
 sudo apt-get install libfontconfig1
 sudo apt-get upgrade
 
 export DISPLAY=:0
 
+-----------------
+
+pip install pyqt5
