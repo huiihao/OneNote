@@ -53,6 +53,7 @@ error:
 application-specific initialization failed: couldn't connect to display "127.0.0.1:0.0"
 Error in startup script: can't read "xcrys(platform)": no such variable
 solve:
+1.(useless)
 apt install x11-xserver-utils
 xhost +
 
@@ -61,3 +62,5 @@ apt install xinit
 sudo apt-get install x11vnc -y
 sudo apt install net-tools
 sudo apt-get install lightdm
+2.(useful)
+https://cloud.tencent.com/developer/article/1820014
