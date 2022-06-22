@@ -64,3 +64,6 @@ sudo apt install net-tools
 sudo apt-get install lightdm
 2.(useful)
 https://cloud.tencent.com/developer/article/1820014
+vim ~/.bashrc
+export DISPLAY=172.30.240.1:0
+source ~/.bashrc
