@@ -6,5 +6,9 @@ conda info -e
 source activate py2
 source deactivate
 
+useful for python2 ploting fig:
+conda install qt
+
+
 ｌｉｎｕｘ系统才需要用ｃｏｎｄａ　ａｃｔｉｖａｔｅ　ｘｘｘ。
 ｗｉｎｄｏｕｗ 系统不用
