@@ -10,6 +10,7 @@ tar -xf xcrysden-1.6.2-windows-wsl.tar.gz
 
 mv xcrysden-1.6.2-bin-shared /mnt/d/xcrysden
 vi ~/.bashrc
+$PATH
 source ~/.bashrc
 
 xcrysden
@@ -25,7 +26,6 @@ sudo apt-get install mplayer mencoder imagemagick openbabel
 sudo apt update
 sudo apt upgrade
 
-
 xcrysden
 error:
 /mnt/d/xcrysden/bin/xcrys: error while loading shared libraries: libtk8.6.so: cannot open shared object file: No such file or directory
@@ -33,14 +33,12 @@ solve:
 sudo apt-get update -y
 sudo apt-get install -y libtk8.6
 
-
 xcrysden
 error:
 /mnt/d/xcrysden/bin/xcrys: error while loading shared libraries: libTogl.so.2: cannot open shared object file: No such file or directory
 solve:
 sudo apt-get update -y
 sudo apt-get install -y libtogl2
-
 
 xcrysden
 error:
