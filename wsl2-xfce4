@@ -1,0 +1,24 @@
+https://blog.sciencenet.cn/blog-3463585-1281912.html
+
+
+1.安装wsl2 ubuntu后进入命令行。
+
+2. 更换科大源或阿里清华源。/etc/apt/source.list
+
+3. sudo apt-get update && sudo apt-get upgrade
+
+4. sudo apt-get install aptitude
+
+5. sudo aptitude install xubuntu-desktop 或 xfce4
+
+6. Win下安装XLaucher
+
+7. 设置显示：~/.bashrc
+
+export DISPLAY=(cat /etc/resolv.conf | grep nameserver | awk '{print2}'):0
+
+8. 启动Xlaucher
+
+9. 启动ubuntu， 输入 xfce4-session,可以看到图形界面。
+
+10. 文件互访：  ln -s /mnt/c/Users/Administrator/Desktop /home/zyguo/Win-Desktop
