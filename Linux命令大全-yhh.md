@@ -114,6 +114,12 @@
 
 ## 常用命令
 
+### seq
+
+```bash
+for i in `seq 3.86 0.02 4.01`; do  echo $i ; done
+```
+
 ### find
 
 ```bash
@@ -207,6 +213,9 @@ sed -n "${i}p" file | awk '{print $3}' #输出第i行内容，并抓取第3列
 sed 's/'"$a"'/'"$b"'/g' POSCAR
 # 一般调用变量，不论是字符串还是数字，用'""'套住，不会有任何问题
 
+$ sed -n '/energy/p' file    #查询包括关键字energy所在所有行
+$ sed -n '/\$/p' file        #查询包括关键字$所在所有行，反斜线\为转义字符，代表屏蔽$的特殊含义
+
 sed '9s/^/  /g' POSCAR #在第九行行首插入空格
 sed '9,$s/^/  /g' POSCAR #第九到最后一行行首插入空格
 
@@ -240,9 +249,14 @@ sed -i '1s/[#*]/fff/gp' file #表示针对文件第1行，将其中的#号或是
 sed '1a  verbosity    ='high',\n ' M.in   #第一行后增加多行，使用换行符\n
 ```
 
-### [awk](https://www.runoob.com/linux/linux-comm-awk.html)
+### [awk](https://mp.weixin.qq.com/s?__biz=MzkzNDIwMDEyNA==&mid=2247486987&idx=1&sn=2b1709e184c934890c7362c0f5fcfa0b&chksm=c2419858f536114e98c98be1698e391922f8b9e8f6d427e09fd24dbd36e9233e9289e48ce3b6&scene=21#wechat_redirect)
 
 ```bash
+$0表示整行文本
+$1表示文本行中第一个数据字段
+$2表示文本行中第二个数据字段
+$n表示文本行中第n个数据字段
+
 awk '{print $1,$4}' file #每行按空格或TAB分割，输出文本中的1、4项
 awk '{print $(NF-1)}' file #删除文件最后一列
 
@@ -271,6 +285,21 @@ awk '/Begin final coordinates/,/End final coordinates/{print $0}' vcrlx.output |
 
 #对rlx的output中的原子位置(ap)进行抓取(与原子种类及其个数无关的抓取)
 awk '/Begin final coordinates/,/End final coordinates/{print $0}' rlx.output | awk '/ATOMIC_P/,/End final coordinates/{print $0}' > log ; sed '$d' log
+```
+
+```bash
+#awk进行数据运算等
+#test.dat
+1,2,3,4,5,6
+2,3,4,5,6,7
+3,4,5,6,7,8
+4,5,6,7,8,9
+#可以用分割符设定来分解字符串
+awk -F"," '{print $1,$2}' test.dat > new.dat
+#加入加法和乘法
+awk -F"," '{print $1,$2+$3,$4*2,$4*$5}' test.dat > new.dat
+#先对第一列和第三列作差并且平方，然后求和，最后除以20，开根号
+awk '{sum +=(($1-$3)^2)};END{print sqrt(sum/20)}' test.dat
 ```
 
 ### [grep]([Linux grep 命令 | 菜鸟教程 (runoob.com)](https://www.runoob.com/linux/linux-comm-grep.html))
@@ -316,6 +345,46 @@ grep ^[[:digit:]] file：匹配数字开头的
 
 
 ## 常用命令举例
+
+### [数组]([磨刀不误砍柴工：shell学习（3）--传递参数和数组 (qq.com)](https://mp.weixin.qq.com/s?__biz=MzkzNDIwMDEyNA==&mid=2247484975&idx=1&sn=3cdc29565b676e0efab8c2456197d09f&chksm=c241907cf536196aeb576ddfe548f1cf9f46dce27cc9691f832086dd19c159dacd0da2be336e&scene=21#wechat_redirect))
+
+```bash
+my_array=(A B "C" D)
+#等价于
+my_array[0]=A
+my_array[1]=B
+my_array[2]=C
+my_array[3]=D
+echo "第一个元素为: ${my_array[0]}"
+echo "第二个元素为: ${my_array[1]}"
+echo "第三个元素为: ${my_array[2]}"
+echo "第四个元素为: ${my_array[3]}"
+#*和@都代表所有
+echo "数组的元素为: ${my_array[*]}"
+echo "数组的元素为: ${my_array[@]}"
+#数组长度
+echo "数组元素个数为: ${#my_array[*]}"
+echo "数组元素个数为: ${#my_array[@]}"
+
+#外部输入构建数组，然后输出
+my_array[0]=$1
+my_array[1]=$2
+my_array[2]=$3
+my_array[3]=$4
+for i in $(seq 0 3)           # i = 0 1 2 3 
+do
+echo ${my_array[$i]}
+done
+# 运行命令 bash test.sh  A B 1 2       
+```
+
+### [遍历文件夹]([Shell中的for循环，批量提交作业，复制文件 (qq.com)](https://mp.weixin.qq.com/s?__biz=MzkzNDIwMDEyNA==&mid=2247486982&idx=1&sn=ab9d32dd8c240b24879ae7ad8f1a7e44&chksm=c2419855f53611438352ac7c62a744bb3e60ae250d08845377c3615db46b3369055210d3ff58&scene=21#wechat_redirect))
+
+```bash
+$ ls
+1  2  3  4  5  6  a  b  c
+$ for i in `ls -d */` ; do echo $i ; done 
+```
 
 ### 变量赋值
 
@@ -661,13 +730,13 @@ done
 >
 > 1.000
 >
->   3.944000000  0.000000000  0.000000000
+> 3.944000000  0.000000000  0.000000000
 >
->   0.000000000  3.944000000  0.000000000
+> 0.000000000  3.944000000  0.000000000
 >
->   0.000000000  0.000000000  3.913907043
+> 0.000000000  0.000000000  3.913907043
 >
->  1 1 3
+> 1 1 3
 >
 > Direct
 >
